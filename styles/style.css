@@ -1,0 +1,16 @@
+h1
+	{
+	color: #11EDAF
+	}
+a:link
+	{
+	color: blue
+	}
+a:visited
+	{
+	color: gray
+	}
+a:hover
+	{
+	text-decoration:none
+	}
