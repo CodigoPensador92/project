@@ -1,0 +1,84 @@
+<html lang="ru">
+
+<head>
+  <title>Калькулятор</title>
+  <meta charset="UTF-8" />
+  <meta name="Автор" content="Балина Дарья">
+   <script>
+function ShowCalc()
+{
+	let income = document.getElementById("income").value;
+	let utility_payments = document.getElementById("utility_payments").value;
+	let foods = document.getElementById("foods").value;
+	let credits = document.getElementById("credits").value;
+	let c=income-utility_payments-credits-foods;
+	alert("Свободных денег для накоплений у вас отстается: " + c + " рублей");
+	
+}   
+   </script>
+<style>
+form
+	{
+	/* Форма по центру */
+	margin:0 auto;
+	width: 400px;
+	/* Контур формы */
+	padding: 1em
+	border: 1px solid #CCC;
+	border-radius: 1em;
+	}
+ul
+	{
+	list-style: none;
+	padding: 0;
+	margin: 0; 
+	}
+form li + li
+	{
+	margin-top: 1em;
+	list-style-type: none;
+	}
+.button 
+	{
+	padding-left: 90px;
+	}
+</style>
+</head>
+
+<body>
+	<h1>Давайте посчитаем сколько у вас есть свободных денег</h1>
+		<form atinion="/my-handling-form-page" method="post">
+		<ul>		
+		<li>
+		<label for="income">Доход</label>
+		<input type="number" id="income" name="income">
+		</li>
+		<b>Обязательные расходы</b>
+		<li>
+		<label for="utility_payments">КУ</label>
+		<input type="number" id="utility_payments" name="utility_payments">
+		</li>
+		<li>
+		<label for="foods">Продукты питания</label>
+		<input type="number" id="foods" name="foods">
+		</li>
+		<li>
+		<label for="credits">Кредиты</label>
+		<input type="number" id="credits" name="credits">
+		</li>
+		
+		
+		
+		
+		<li class="button">
+			<button type="submit" onclick="ShowCalc()">
+			Рассчет
+			</button>
+			
+		</li>
+		</ul>
+		</form
+
+</body>
+
+</html>
