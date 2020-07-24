@@ -12,11 +12,12 @@ function ShowCalc()
 	let foods = document.getElementById("foods").value;
 	let credits = document.getElementById("credits").value;
 	let c=income-utility_payments-credits-foods;
-	alert("Свободных денег для накоплений у вас отстается: " + c + " рублей");
+	alert("Свободных денег для накоплений у вас остается: " + c + " рублей");
 	
 }   
    </script>
 <style>
+*, *:before, *:after{box-sizing: border-box;}
 form
 	{
 	/* Форма по центру */
@@ -27,56 +28,60 @@ form
 	border: 1px solid #CCC;
 	border-radius: 1em;
 	}
-ul
+div
 	{
-	list-style: none;
-	padding: 0;
-	margin: 0; 
+	padding:12px;
+    border-bottom:1px solid #eee;
+    position:relative;
 	}
-form li + li
+form.label
 	{
-	margin-top: 1em;
-	list-style-type: none;
+	width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+	font-family: 'Roboto', sans-serif;
 	}
-.button 
+form.input 
 	{
-	padding-left: 90px;
+    height:40px;
+    width:220px;
+    padding:5px 8px;
+	font-family: 'Roboto', sans-serif;
+	}
+button 
+	{
+	margin-left:156px;
 	}
 </style>
 </head>
 
 <body>
 	<h1>Давайте посчитаем сколько у вас есть свободных денег</h1>
-		<form atinion="/my-handling-form-page" method="post">
-		<ul>		
-		<li>
+		<form class="transparent" atinion="/my-handling-form-page" method="post">
+		<div>
 		<label for="income">Доход</label>
 		<input type="number" id="income" name="income">
-		</li>
+		</div>
 		<b>Обязательные расходы</b>
-		<li>
+		<div>
 		<label for="utility_payments">КУ</label>
 		<input type="number" id="utility_payments" name="utility_payments">
-		</li>
-		<li>
+		</div>
+		<div>
 		<label for="foods">Продукты питания</label>
 		<input type="number" id="foods" name="foods">
-		</li>
-		<li>
+		</div>
+		<div>
 		<label for="credits">Кредиты</label>
 		<input type="number" id="credits" name="credits">
-		</li>
-		
-		
-		
-		
-		<li class="button">
+		</div>
+	
 			<button type="submit" onclick="ShowCalc()">
 			Рассчет
 			</button>
 			
-		</li>
-		</ul>
 		</form
 
 </body>
