@@ -1,0 +1,39 @@
+h1
+	{
+	color: gold;
+	}
+a:link
+	{
+	color: blue
+	}
+a:visited
+	{
+	color: gray
+	}
+a:hover
+	{
+	text-decoration:none
+	}
+	.menu-main ul {
+		list-style: none;
+		margin: 0; 
+		padding-left: 0;
+		}
+	.menu-main li 
+	{
+		display: inline;
+	
+	}
+	.menu-main a {text-decoration: none; color: gold; size: 28}
+	.Index 
+	{
+	background-color: black;
+	}
+	.Calc 
+	{
+	background-color: black;
+	}
+	.Cont 
+	{
+	background-color: black;
+	}
