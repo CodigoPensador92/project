@@ -4,6 +4,7 @@
   <title>Калькулятор</title>
   <meta charset="UTF-8" />
   <meta name="Автор" content="Балина Дарья">
+	<script src="scripts/script.js"></script>
    <script>
 function ShowCalc()
 {
@@ -13,8 +14,8 @@ function ShowCalc()
 	let credits = document.getElementById("credits").value;
 	let c=income-utility_payments-credits-foods;
 	alert("Свободных денег для накоплений у вас остается: " + c + " рублей");
-	
-}   
+
+}
    </script>
 <style>
 *, *:before, *:after{box-sizing: border-box;}
@@ -43,14 +44,14 @@ form.label
     padding:3px;
 	font-family: 'Roboto', sans-serif;
 	}
-form.input 
+form.input
 	{
     height:40px;
     width:220px;
     padding:5px 8px;
 	font-family: 'Roboto', sans-serif;
 	}
-button 
+button
 	{
 	margin-left:156px;
 	}
@@ -77,11 +78,11 @@ button
 		<label for="credits">Кредиты</label>
 		<input type="number" id="credits" name="credits">
 		</div>
-	
+
 			<button type="submit" onclick="ShowCalc()">
 			Рассчет
 			</button>
-			
+
 		</form
 
 </body>
