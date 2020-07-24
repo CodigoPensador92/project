@@ -14,26 +14,28 @@ a:hover
 	{
 	text-decoration:none
 	}
-	.menu-main ul {
-		list-style: none;
-		margin: 0; 
-		padding-left: 0;
-		}
-	.menu-main li 
+	.menu-main
 	{
-		display: inline;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: black; 
+		width: 50 %;
+		height: 250 px;
+	}
+	 .menu-main a.Ind
+	{
+		margin-left: 0;
+		margin-right: 33%;
+		color: gold;
+	}
+	 .menu-main a.Calc
+	{
+		margin-left: 33%;
+		color: gold;
+	}
+	 .menu-main a.Con
+	{
+		margin-left: 33%;
+		color: gold;
+	}
 	
-	}
-	.menu-main a {text-decoration: none; color: gold; size: 28}
-	.Index 
-	{
-	background-color: black;
-	}
-	.Calc 
-	{
-	background-color: black;
-	}
-	.Cont 
-	{
-	background-color: black;
-	}
