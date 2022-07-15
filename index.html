@@ -1,40 +1,141 @@
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <title>Финансовый советник</title>
-  <meta charset="UTF-8" />
-  <meta name="Автор" content="Балина Дарья">
-  <link rel="stylesheet" href="styles/style.css">
-  <script src="scripts/script.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vue</title>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+<!-- Загрузите полифиллы для поддержки старых браузеров -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+
+<!-- Загрузите Vue, а затем BootstrapVue -->
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+<!-- Загрузите следующее для поддержки BootstrapVueIcons -->
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+    <div class="container" id="app">
+        <div class="navigation-btn">
+            <button class="btn" @click="Account = true"> Добавить счет </button>
+            <button class="btn" @click="Operation = true"> Добавить операцию</button>
+        </div>
+        <div class="accounts" v-if="accounts.length > 0">
+            <h2>Счета:</h2>
+        <ul class="list">
+            <li class="list-accounts" v-for="acc in accounts">
+                <span>{{ acc }}</span>  &nbsp;
 
-  <div id="app"></div>
-  <h1>Финансовый калькулятор</h1>
-  <nav>
-	<div class="menu-main">
-	<a class="Ind" href="index.html">Главная страница</a>
-	<a class="Cacl" href="calc.html">Кулькулятор</a>
-	<a class="Con" href="сontacts.html">Контакты</a>
-	</div>
-</nav>
-<h2>
-  <p>Это страница для создания финансового калькулятора и планировщика. </p>
-Она поможет вам освоить азы <strong>финансовой грамотности</strong>
-</h2>
-<img src="images/Money.jpg" alt="Оборот денег, чем больше вложишь, тем больше получишь">
-<h3><p>Для начала ознакомьтесь с основами финансовой грамостности:</p></h3>
-<ul> 
-  <li><a href="https://zen.yandex.ru/media/id/5de0d076d98f5960d2533c1f/osnovy-finansov-1-chast-5de0d68e38731001fc2a4700" title="Вводная часть про термины и основы"> Часть 1 </a>
-  <li><a href="https://zen.yandex.ru/media/id/5de0d076d98f5960d2533c1f/osnovy-finansov-2-chast-5de0e4b35eb26800afc9b451" title="Поговорим про основные статьи доходов и расходов"> Часть 2 </a>
-</ul>
-<h3>Давайте посчитаем сколько денег у вас остается<a href="calc.html":>Калькулятор</a></h3>
-<h3>Чтобы получить 10 советов по бюджету заполните <a href="form.html" title="Оставьте свою почту":>форму</a></h3>
-<footer>
-<p>Если остались вопросы, то переходи в раздел <a href="сontacts.html" title="Для связи">контакты</a></p>
-</footer>
-<script src="src/script.js"></script>
+                <button class="btn danger" @click="deleteAccount(idx)">Удалить</button>
+            </li>
+        </ul>
+        </div>
+        <div v-else>Добавьте счет</div>
+
+        <div class="operations" v-if="operations.length > 0">
+            <h2>Операции:</h2>
+        <ul class="list">
+            <li class="list-operations" v-for="operation in operations">
+                <span>{{ operation }}</span>  &nbsp;
+
+                <button class="btn danger" @click="deleteOperation(idx)">Удалить</button>
+            </li>
+        </ul>
+        </div>
+        <div v-else>Добавьте операцию</div>
+
+        <template v-if="Account">
+        <div class="add-account-header">
+            <slot name="header">
+                Введите название счета
+            </slot>
+          </div>
+
+          <div class="add-account-body">
+            <slot name="body">
+                <input type="text" v-model="accountValue">
+            
+              <button class="modal-default-button" @click="addAccount">
+                OK
+              </button>
+            </slot>
+            </div>
+        </template>
+
+        <template v-if="Operation">
+            <div class="add-operation-header">
+
+                <slot name="header">
+                    Выберите счет
+                </slot>
+            </div>
+    
+            <div class="add-operation-body">
+                <select v-model="selectedAccount">
+                    <option 
+                    v-for="account in accounts" 
+                    v-bind:value="account">
+                        {{ account }}
+                      </option>
+                  </select>
+            </div>
+
+            <div class="add-operation-header">
+                <slot name="header">
+                    Выберите категорию
+                </slot>
+            </div>
+    
+            <div class="add-operation-body">
+                <select v-model="selectedItem">
+                    <option 
+                    v-for="item in items" 
+                    v-bind:value="item">
+                        {{ item }}
+                      </option>
+                  </select>
+            </div>
+
+            <div class="add-operation-header">
+                <slot name="header">
+                    Введите сумму
+                </slot>
+            </div>
+    
+            <div class="add-operation-body">
+                <slot name="body">
+                    <input type="text" v-model="operationValue">
+                </slot>
+                
+            </div>
+
+            <template>
+                <div>
+                  <label for="example-datepicker">Выберите дату</label>
+                  <b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
+                  <p>Значение: '{{ value }}'</p>
+                </div>
+              </template>
+
+            <button class="modal-default-button" @click="addOperation">
+                OK
+        </button>
+            
+        </template>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
+
